@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import {connect} from 'react-redux'
+import {connect, useSelector} from 'react-redux'
 import {fetchDOG} from './store/actions/dogActions'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import './App.css'
 
 // const Div = styled.div `
@@ -9,8 +9,8 @@ import './App.css'
 // `
 
 import Dog from './components/Dog'
-function App({fetchDOG, loading, errorMessage}) {
-
+function App({fetchDOG, errorMessage}) {
+  const loading = useSelector(state => state.loading)
   useEffect(()=>{
     fetchDOG()
   },[fetchDOG])
@@ -26,7 +26,7 @@ function App({fetchDOG, loading, errorMessage}) {
 const mapsToStateProps = (state) => {
   return {
     dogData: state.dogData,
-    loading: state.loading,
+    // loading: state.loading,
     errorMessage: state.errorMessage
   }
 }
